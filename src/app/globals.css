@@ -3,5 +3,5 @@
 @tailwind utilities;
 
 body {
-  @apply text-white bg-purple-1100 ;
+  @apply bg-purple-1100 flex min-h-screen flex-col text-white;
 }
