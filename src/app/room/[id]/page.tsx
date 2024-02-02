@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useSocket } from "@/context/socket-context";
 import { Mic, Monitor, Phone, SendHorizonal, VideoIcon } from "lucide-react";
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { Chat } from "../components/chat";
 
 interface Props {
@@ -15,15 +15,31 @@ interface Props {
 
 export default function Room({ params }: Props) {
   const { socket } = useSocket();
+  const localStream = useRef<HTMLVideoElement>(null);
   console.log({ socket });
+  const initCamera = async () => {
+    const video = await navigator.mediaDevices.getUserMedia({
+      video: true,
+      audio: {
+        noiseSuppression: true,
+        echoCancellation: true,
+      },
+    });
+
+    if (localStream.current) {
+      localStream.current.srcObject = video;
+    }
+  };
+
   useEffect(() => {
-    socket?.on("connect", () => {
+    socket?.on("connect", async () => {
       console.log("conectado");
       console.log("conectado");
       socket.emit("subscribe", {
         roomId: params.id,
         socketId: socket.id,
       });
+      await initCamera();
     });
   }, [socket]);
 
@@ -33,11 +49,11 @@ export default function Room({ params }: Props) {
         {/* videos container */}
         <div className="grid flex-1 grid-cols-1 gap-8 md:grid-cols-2">
           <div className="relative h-full w-full rounded-md border-2 border-purple-800 bg-gray-950 p-2">
-            <video className="h-full w-full" />
+            <video className="h-full w-full" autoPlay ref={localStream} />
             <span className="absolute bottom-3">Christopher Ristau</span>
           </div>
           <div className="relative h-full w-full rounded-md border-2 border-purple-800 bg-gray-950 p-2">
-            <video className="h-full w-full" />
+            <video className="h-full w-full" autoPlay playsInline />
             <span className="absolute bottom-3">Christopher Ristau</span>
           </div>
           <div className="relative h-full w-full rounded-md border-2 border-purple-800 bg-gray-950 p-2">
