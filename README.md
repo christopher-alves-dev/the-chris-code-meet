@@ -39,13 +39,12 @@ $ npm install
 $ npm start
 ```
 
-## Main Feature: 
+## Main Feature:
 
-
-* Real-time communication with the backend using Socket.io
-* Stylish and responsive UI components with Tailwind CSS and shadcn/ui
-* Performant form handling with React Hook Form and Zod validation
-* Better Application Performance: Leverages server-side components from Next.js, contributing to enhanced application performance.
+- Real-time communication with the backend using Socket.io
+- Stylish and responsive UI components with Tailwind CSS and shadcn/ui
+- Performant form handling with React Hook Form and Zod validation
+- Better Application Performance: Leverages server-side components from Next.js, contributing to enhanced application performance.
 
 ---
 
