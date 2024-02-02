@@ -24,10 +24,10 @@ Welcome to the frontend repository of "The Chris Code Meet" application. This re
 ##### Clone this repo #####
 
 # https
-$ git clone https://github.com/christopher-alves-dev/the-chris-code-meet-back-end.git
+$ git clone https://github.com/christopher-alves-dev/the-chris-code-meet-front.git
 
 # ssh
-$ git clone git@github.com:christopher-alves-dev/the-chris-code-meet-back-end.git
+$ git clone git@github.com:christopher-alves-dev/the-chris-code-meet-front.git
 
 ##### Access this repo #####
 $ cd meet-front
