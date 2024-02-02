@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Rubik } from "next/font/google";
 import "./globals.css";
 import { Header } from "./components/header";
+import { SocketProvider } from "@/context/socket-context";
 
 const rubik = Rubik({ subsets: ["latin"] });
 
@@ -18,8 +19,10 @@ export default function RootLayout({
   return (
     <html lang="pt-BR">
       <body className={rubik.className}>
-        <Header />
-        {children}
+        <SocketProvider>
+          <Header />
+          {children}
+        </SocketProvider>
       </body>
     </html>
   );
