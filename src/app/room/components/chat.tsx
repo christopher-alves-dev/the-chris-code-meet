@@ -16,7 +16,6 @@ interface Props {
 }
 
 export const Chat = ({ roomId }: Props) => {
-  console.log({ roomIdChat: roomId });
   const [chatMessages, setChatMessages] = useState<IChatMessage[]>([]);
   const inputRef = useRef<HTMLInputElement>(null);
   const { socket } = useSocket();
@@ -25,7 +24,6 @@ export const Chat = ({ roomId }: Props) => {
     e.preventDefault();
 
     if (inputRef.current?.value) {
-      console.log({ value: inputRef.current?.value });
       const messageToServer = {
         message: inputRef.current?.value,
         username: "Christopher Ristau",
@@ -41,7 +39,6 @@ export const Chat = ({ roomId }: Props) => {
 
   useEffect(() => {
     socket?.on("chat", (data: IChatMessage) => {
-      console.log("message: ", data);
       setChatMessages((prevState) => [...prevState, data]);
     });
   }, [socket]);
